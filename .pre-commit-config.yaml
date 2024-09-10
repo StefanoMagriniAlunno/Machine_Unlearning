@@ -1,0 +1,45 @@
+default_language_version:
+  python: python3.10.12
+repos:
+  - repo: 'https://github.com/pre-commit/pre-commit-hooks'
+    rev: v4.6.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: mixed-line-ending
+      - id: check-yaml
+      - id: check-json
+      - id: check-docstring-first
+      - id: sort-simple-yaml
+      - id: pretty-format-json
+        args: ['--autofix']
+  - repo: 'https://github.com/PyCQA/flake8'
+    rev: 7.1.1
+    hooks:
+      - id: flake8
+        args: ['--ignore=E203,E501,W503']
+  - repo: 'https://github.com/PyCQA/doc8'
+    rev: v1.1.2
+    hooks:
+      - id: doc8
+        args: ['--ignore=D001']
+  - repo: 'https://github.com/PyCQA/autoflake'
+    rev: v2.3.1
+    hooks:
+      - id: autoflake
+  - repo: 'https://github.com/PyCQA/isort'
+    rev: 5.13.2
+    hooks:
+      - id: isort
+  - repo: 'https://github.com/pre-commit/mirrors-mypy'
+    rev: v1.11.2
+    hooks:
+      - id: mypy
+  - repo: 'https://github.com/shellcheck-py/shellcheck-py'
+    rev: v0.10.0.1
+    hooks:
+      - id: shellcheck
+  - repo: 'https://github.com/psf/black'
+    rev: 24.8.0
+    hooks:
+      - id: black

@@ -1,0 +1,11 @@
+**/.*
+**/_*
+**/build
+**/temp
+**/out
+**/logs
+
+# except for the following files
+!/.gitignore
+!/.gitattributes
+!/.pre-commit-config.yaml
