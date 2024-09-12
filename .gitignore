@@ -4,8 +4,12 @@
 **/temp
 **/out
 **/logs
+data/*
 
 # except for the following files
 !/.gitignore
 !/.gitattributes
 !/.pre-commit-config.yaml
+
+# manual exceptions
+!/data/models

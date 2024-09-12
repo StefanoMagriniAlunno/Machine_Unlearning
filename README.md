@@ -9,7 +9,7 @@ To `download` this repository
 ~~~bash
     cd complete_path/where/install/repository
     # Now we create a directory called `Machine Unlearning` with repository:
-    git clone https://github.com/StefanoMagriniAlunno/Machine Unlearning
+    git clone https://github.com/StefanoMagriniAlunno/Machine_Unlearning
 ~~~
 
 ### Prerequisites
@@ -34,7 +34,8 @@ To `install` this repository
 ~~~bash
     cd complete_path/where/install/repository
     cd Machine_Unlearning
-    ./repo.sh
+    ./repo.sh -b  # download packages
+    ./repo.sh -i  # install packages
 ~~~
 
 * **Remark** :  The installer does not have administrator permissions, it only changes the local folder.
