@@ -17,6 +17,7 @@ The installer checks following system prerequisites:
 1. `python3` version `3.10.12` with:
    1. `virtualenv` version `20.26.3`
 2. `nvidia-drivers` version >=`550.54.14`
+
 See the file `conf.ini` to set the appropriate parameters:
 
 1. `python3_cmd`: path to the python3 executable (e.g. `/usr/bin/python3`). To find this path type:
