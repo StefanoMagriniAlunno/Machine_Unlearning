@@ -40,12 +40,3 @@ To `install` this repository
 
 * **Remark** :  The installer does not have administrator permissions, it only changes the local folder.
 * **Remark** : You can examine the properties of the installer by typing `./repo.sh --help`.
-
-
-## Navigate
-
-### Documentation
-It is possible consult documentation opening the html file `doc/_build/html/index.html` in your browser
-It's contain details about python code in `src`, each file is documentated.
-
-### Console

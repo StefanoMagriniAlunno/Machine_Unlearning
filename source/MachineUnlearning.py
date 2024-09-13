@@ -25,6 +25,8 @@ def train(
         epochs (int): number of epochs
         n_layers (int): number of layers to train in each epoch
         w (float): weight of the imitation loss
+        device (torch.device): device to use for the training
+        classes (List[int]): list of classes to classify
     """
 
     # clear the cache
@@ -205,6 +207,14 @@ def test(
     device: torch.device,
     classes: List[int],
 ):
+    """This function tests a model on a dataset. It computes the accuracy, the confidence and the confusion matrix.
+
+    Args:
+        model (torch.nn.Module): model to test
+        loader (torch.utils.data.DataLoader): loader of the dataset
+        device (torch.device): device to use for the testing
+        classes (List[int]): list of classes to classify
+    """
     # clear the cache
     torch.cuda.empty_cache()
 

@@ -6,7 +6,7 @@ from tabulate import tabulate  # type: ignore
 from torch.utils.data import DataLoader
 from tqdm.notebook import tqdm
 
-from .classification import batch_loss as classification_batch_loss
+from .classification import batch_loss
 
 
 def classification_train(
@@ -57,9 +57,7 @@ def classification_train(
             x, y = x.to(device), y.to(device)
 
             optimizer.zero_grad()
-            loss, att, conf = classification_batch_loss(
-                classifier, x, y, loss_fn, regularization
-            )
+            loss, att, conf = batch_loss(classifier, x, y, loss_fn, regularization)
             loss.backward()
             optimizer.step()
 
@@ -120,7 +118,7 @@ def classification_test(
     for x, y in tqdm(loader, desc="Testing", leave=False):
         x, y = x.to(device), y.to(device)
 
-        _, att, conf = classification_batch_loss(classifier, x, y, loss_fn)
+        _, att, conf = batch_loss(classifier, x, y, loss_fn)
 
         confidence += conf.item()
         accuracy += att.item() / loader.batch_size

@@ -6,13 +6,11 @@ N_CLASSES = 10
 
 
 class Classifier(torch.nn.Module):
-    """This classifier classify images of 32x32 pixels and 1 channel"""
+    """This classifier classify images of 32x32 pixels and 3 channel"""
 
     CNN: torch.nn.Sequential
 
     class InceptionConv2d(torch.nn.Module):
-        """Compute 2 possible convolution using k=1,p=0 and k=3,p=1. Concatenate the solutions and repeat."""
-
         def __init__(self, in_channels: int, out_channels: int, momentum: float = 0.5):
             super(Classifier.InceptionConv2d, self).__init__()
 
@@ -147,6 +145,7 @@ class Classifier(torch.nn.Module):
 
 
 class FilterSet(Dataset):
+    """Filter the dataset to have only the classes in targets."""
 
     dataset: CIFAR10
     access: torch.Tensor
@@ -167,14 +166,21 @@ class FilterSet(Dataset):
 
 
 def main(n_classes: int, epochs: int, batch_size: int, save_dir: str):
+    """Train a classifier with n_classes classes
+
+    Args:
+        n_classes (int): num of classes of the classifier
+        epochs (int): num of epochs to train the classifier
+        batch_size (int): batch size of the training
+        save_dir (str): path where save the model
+    """
     import os
     import random
     from typing import List
 
     import torch.utils.data
+    from common.pretty import classification_test, classification_train
     from torchvision import transforms
-
-    from source.common.pretty import classification_test, classification_train
 
     class CombineOptim(torch.optim.Optimizer):
 
@@ -295,8 +301,6 @@ if __name__ == "__main__":
     import os
     import sys
 
-    sys.path.append(
-        os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-    )
+    sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
     main(8, 30, 256, "data/models/Cifar10")

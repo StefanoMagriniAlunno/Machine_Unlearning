@@ -29,14 +29,3 @@ def install(c, cache: str):
         c.run(
             f"{sys.executable} -m pip install --compile --no-index --find-links={cache} --quiet {pkg} "
         )
-
-
-@task
-def build(c, sphinx: str):
-    """Build contents"""
-
-    c.run("rm -rf doc/_build ")
-    c.run("mkdir -p doc/_build ")
-    c.run("mkdir -p doc/_static ")
-    c.run("mkdir -p doc/_templates ")
-    c.run(f"{sphinx} -b html doc doc/_build/html --quiet ")

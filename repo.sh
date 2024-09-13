@@ -146,16 +146,6 @@ install() {
     fi
     echo -e "\e[36mINFO\e[0m Contents installed"
 
-    # build repository
-    if ! "$invoke_cmd" build --sphinx "$venv/bin/sphinx-build"; then
-        echo
-        echo -e "\e[31mERROR\e[0m Failed to build contents"
-        echo
-        echo
-        exit 1
-    fi
-    echo -e "\e[36mINFO\e[0m Contents built"
-
     # prepare repository
     if ! "$pre_commit_cmd" install > /dev/null; then
         echo

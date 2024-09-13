@@ -130,6 +130,7 @@ class Classifier(torch.nn.Module):
 
 
 class FilterSet(Dataset):
+    """Filter the dataset to have only the classes in targets."""
 
     dataset: EMNIST
     access: torch.Tensor
@@ -148,14 +149,21 @@ class FilterSet(Dataset):
 
 
 def main(n_classes: int, epochs: int, batch_size: int, save_dir: str):
+    """Train a classifier with n_classes classes
+
+    Args:
+        n_classes (int): num of classes of the classifier
+        epochs (int): num of epochs to train the classifier
+        batch_size (int): batch size of the training
+        save_dir (str): path where save the model
+    """
     import os
     import random
     from typing import List
 
     import torch.utils.data
+    from common.pretty import classification_test, classification_train
     from torchvision import transforms
-
-    from source.common.pretty import classification_test, classification_train
 
     class CombineOptim(torch.optim.Optimizer):
 
@@ -271,8 +279,6 @@ if __name__ == "__main__":
     import os
     import sys
 
-    sys.path.append(
-        os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-    )
+    sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
     main(20, 10, 256, "data/models/EMNIST")
